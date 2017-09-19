@@ -15,6 +15,15 @@ struct BinaryMax:public binary_function<T, T, T>{
 template <typename T>
 const T BinaryMax<T>::neutral = std::numeric_limits<T>::min();
 
+template<typename T>
+struct BinaryMin:public binary_function<T, T, T>{
+    T operator()(const T& x, const T& y) const{return min(x, y);}
+    const static T neutral;
+};
+
+template <typename T>
+const T BinaryMin<T>::neutral = std::numeric_limits<T>::max();
+
 template<typename T, typename Operation>
 class SegmentTree{
 private:
